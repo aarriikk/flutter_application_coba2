@@ -108,13 +108,11 @@ class MachineDataService {
         },
       );
 
-      final resData = jsonDecode(res.body)['data'];
-
       httpErrorHandle(
           response: res,
           context: context,
           onSuccess: () async {
-            showSnackBar(context, resData['message']);
+            showSnackBar(context, 'Data created');
           });
 
     }catch(err){

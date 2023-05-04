@@ -20,19 +20,19 @@ class _BottomNavbarComponent extends State<BottomNavbarComponent> {
           items: const [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
-                label: 'home',
+                label: 'Home',
                 backgroundColor: Colors.blue),
             BottomNavigationBarItem(
                 icon: Icon(Icons.history),
-                label: 'history',
+                label: 'History',
                 backgroundColor: Colors.blue),
             BottomNavigationBarItem(
                 icon: Icon(Icons.data_array),
-                label: 'data',
+                label: 'Data',
                 backgroundColor: Colors.blue),
             BottomNavigationBarItem(
                 icon: Icon(Icons.input),
-                label: 'manual',
+                label: 'Manual',
                 backgroundColor: Colors.blue),
           ]);
   }

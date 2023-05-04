@@ -44,6 +44,7 @@ dependencies:
   open_file: ^3.3.1
   path_provider: ^2.0.14
   google_fonts: ^4.0.4
+  printing: ^5.10.3
 
 dev_dependencies:
   flutter_test:

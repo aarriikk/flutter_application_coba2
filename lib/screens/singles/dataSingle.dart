@@ -48,27 +48,33 @@ class _DataSinglePageState extends State<DataSinglePage> {
     listInputs = [
       {
         'name': 'Object Type',
-        'controller': objectTypeController
+        'controller': objectTypeController,
+        'type': 'text'
       },
       {
         'name': 'Quantity Target',
-        'controller': quantityTargetController
+        'controller': quantityTargetController,
+        'type': 'number'
       },
       {
         'name': 'Time Running',
-        'controller': upTimeController
+        'controller': upTimeController,
+        'type': 'number'
       },
       {
         'name': 'Cycle Time Machine',
-        'controller': cycleController
+        'controller': cycleController,
+        'type': 'number'
       },
       {
         'name': 'Raw Material/pcs (g)',
-        'controller': objectTypeController
+        'controller': rawMaterialGramController,
+        'type': 'number'
       },
       {
         'name': 'Raw Material Price (Kg)',
-        'controller': objectTypeController
+        'controller': rawMaterialPriceController,
+        'type': 'number'
       },
     ];
 
@@ -99,6 +105,7 @@ class _DataSinglePageState extends State<DataSinglePage> {
                       padding: const EdgeInsets.fromLTRB(20, 20, 20, 15),
                       child: TextField(
                         controller: input['controller'],
+                        keyboardType:  input['type'] == 'text' ? TextInputType.text : TextInputType.number,
                         decoration: InputDecoration(
                             labelText: input['name'],
                             border: OutlineInputBorder()
@@ -113,7 +120,9 @@ class _DataSinglePageState extends State<DataSinglePage> {
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    handleSubmit();
+                  },
                   child: const Text('Submit',
                   style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)
                   ),
