@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Provider.of<UserProvider>(context).user.token.isEmpty
           ? const LoginPage()
-          : const HistoryPage(),
+          : const LayoutPage(),
     );
   }
 }

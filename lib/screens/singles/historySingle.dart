@@ -51,6 +51,7 @@ class _HistorySinglePageState extends State<HistorySinglePage> {
     try{
       final res = await machineDataService.getDataPdf(context: context, machineId: widget.machineId);
       final Map<String, dynamic> resData = json.decode(res!.body);
+
       if(resData['status'] == 'success'){
         final Map<String, dynamic> data = resData['data'];
         setState(() {

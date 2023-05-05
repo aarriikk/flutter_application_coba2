@@ -6,9 +6,10 @@ class User {
   final String token;
 
   User(
-      {required this.id,
-      required this.email,
-      required this.token,
+      {
+        required this.id,
+        required this.email,
+        required this.token,
       });
 
   Map<String, dynamic> toMap() {

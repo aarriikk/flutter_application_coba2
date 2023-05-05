@@ -17,6 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final AuthService authService = AuthService();
 
   void signUserUp() async {
+    print(emailController.text);
     authService.signUpUser(context: context, email: emailController.text, password: passwordController.text);
   }
 

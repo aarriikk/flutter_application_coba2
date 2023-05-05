@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:my_app/models/user_model.dart';
 import 'package:my_app/providers/user_provider.dart';
 import 'package:my_app/screens/auth/login.dart';
 import 'package:my_app/screens/layout.dart';
@@ -19,11 +18,12 @@ class AuthService {
     required String password,
   }) async {
     try {
-      User user = User(id: '', email: email, token: '');
-
       http.Response res = await http.post(
           Uri.parse('${Constants.uri}/auth/signup'),
-          body: user.toJson(),
+          body: jsonEncode({
+            'email': email,
+            'password': password
+          }),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8'
           });
@@ -35,6 +35,7 @@ class AuthService {
             showSnackBar(context, 'Account created!');
           });
     } catch (err) {
+      print(err);
       showSnackBar(context, err.toString());
     }
   }

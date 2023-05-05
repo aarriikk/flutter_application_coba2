@@ -6,7 +6,6 @@ import 'package:printing/printing.dart';
 
 Future<Uint8List> generatePdf(Map<String, dynamic> data) async {
   final pdf = pw.Document();
-  print(data);
 
   final robotoLight = await PdfGoogleFonts.robotoLight();
   
@@ -97,15 +96,6 @@ Future<Uint8List> generatePdf(Map<String, dynamic> data) async {
         ),
         buildBackground: (context) => pw.FullPage(
           ignoreMargins: true,
-          child: pw.Container(
-            margin: const pw.EdgeInsets.all(5),
-            decoration: pw.BoxDecoration(
-              border: pw.Border.all(
-                color: const PdfColor.fromInt(0xffe435),
-                width: 5
-              )
-            )
-          )
         )
       ),
     )
