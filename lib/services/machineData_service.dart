@@ -14,14 +14,15 @@ class MachineDataService {
 
   Future<http.Response?> getDataPdf({
     required BuildContext context,
-    required machineId
+    required machineId,
+    required id
   }) async {
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? token = prefs.getString('x-auth-token');
 
       http.Response res = await http.get(
-          Uri.parse('${Constants.uri}/calculation?machineId=${machineId}'),
+          Uri.parse('${Constants.uri}/calculation?machineId=${machineId}&id=${id}'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
             'x-auth-token': token!
@@ -35,13 +36,16 @@ class MachineDataService {
     }
   }
 
-  Future<http.Response> getAllMachine(BuildContext context) async {
+  Future<http.Response> getAllMachine({
+    required BuildContext context,
+    required machineId
+  }) async {
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? token = prefs.getString('x-auth-token');
 
       http.Response res = await http.get(
-        Uri.parse('${Constants.uri}/parameter'),
+        Uri.parse('${Constants.uri}/parameter?machineId=$machineId'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': token!

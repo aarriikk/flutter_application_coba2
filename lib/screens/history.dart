@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/screens/singles/historyList.dart';
 import 'package:my_app/screens/singles/historySingle.dart';
 import 'package:my_app/services/machineData_service.dart';
 
@@ -55,7 +56,8 @@ class _HistoryPageState extends State<HistoryPage> {
                       GestureDetector(
                         onTap: (){
                           Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => HistorySinglePage(machineId: (machine as Map<String, dynamic>)['machineId']))
+                              // MaterialPageRoute(builder: (context) => HistorySinglePage(machineId: (machine as Map<String, dynamic>)['machineId']))
+                            MaterialPageRoute(builder: (context) => HistoryListPage(machineId: (machine as Map<String, dynamic>)['machineId']))
                           );
                         },
                         child: Container(

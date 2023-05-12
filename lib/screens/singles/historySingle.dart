@@ -13,7 +13,8 @@ import 'package:open_file/open_file.dart';
 
 class HistorySinglePage extends StatefulWidget{
   final int machineId;
-  const HistorySinglePage({super.key, required this.machineId});
+  final String id;
+  const HistorySinglePage({super.key, required this.machineId, required this.id});
 
   @override
   State<HistorySinglePage> createState() => _HistorySinglePageState();
@@ -35,7 +36,6 @@ class _HistorySinglePageState extends State<HistorySinglePage> {
     final appDocDir = await getApplicationDocumentsDirectory();
     final appDocPath = appDocDir.path;
     final file = File('$appDocPath/document.pdf');
-    print('Save as file ${file.path} ...');
     await file.writeAsBytes(bytes);
     await OpenFile.open(file.path);
   }
@@ -49,7 +49,7 @@ class _HistorySinglePageState extends State<HistorySinglePage> {
 
   Future<void> _fetchMachines() async {
     try{
-      final res = await machineDataService.getDataPdf(context: context, machineId: widget.machineId);
+      final res = await machineDataService.getDataPdf(context: context, machineId: widget.machineId, id: widget.id);
       final Map<String, dynamic> resData = json.decode(res!.body);
 
       if(resData['status'] == 'success'){
@@ -70,7 +70,6 @@ class _HistorySinglePageState extends State<HistorySinglePage> {
 
 
   Widget build(BuildContext context){
-
     final actions = <PdfPreviewAction>[
       PdfPreviewAction(
         icon: const Icon(Icons.save),
@@ -85,16 +84,6 @@ class _HistorySinglePageState extends State<HistorySinglePage> {
         maxPageWidth: 700,
         actions: actions,
       ),
-
-      // body: Container(
-      //  child: Column(
-      //    children: [
-      //      Center(
-      //        child: Text(_machines['realTime'].toString(),),
-      //      ),
-      //    ],
-      //  ),
-      // ),
     );
   }
 
