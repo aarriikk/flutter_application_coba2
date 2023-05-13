@@ -45,7 +45,7 @@ class MachineDataService {
       String? token = prefs.getString('x-auth-token');
 
       http.Response res = await http.get(
-        Uri.parse('${Constants.uri}/parameter?machineId=$machineId'),
+        Uri.parse('${Constants.uri}/raspi?machineId=$machineId'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': token!
